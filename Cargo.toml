@@ -5,6 +5,9 @@ edition = "2024"
 
 [dependencies]
 bootloader = "0.9"
+volatile = "0.2.6"
+spin = "0.5.2"
+lazy_static = { version = "1", features = ["spin_no_std"] }
 
 [[bin]]
 name = "ferrumos"
