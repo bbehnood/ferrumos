@@ -11,17 +11,20 @@ use ferrumos::println;
 pub extern "C" fn _start() -> ! {
     println!("Hello World{}", "!");
 
+    ferrumos::init();
+
     #[cfg(test)]
     test_main();
 
-    loop {}
+    println!("It did not crash!");
+    ferrumos::hlt_loop();
 }
 
 #[cfg(not(test))]
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
     println!("{}", info);
-    loop {}
+    ferrumos::hlt_loop();
 }
 
 #[cfg(test)]
